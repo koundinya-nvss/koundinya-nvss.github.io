@@ -1,0 +1,429 @@
+<!doctype html>
+<!--
+  ─────────────────────────────────────────────────────────────
+  Question Man — personal landing page + link-in-bio
+  Deploy on GitHub Pages:
+    1. Create a repo named  <your-username>.github.io
+    2. Drop this file in as  index.html  and push
+    3. It's live at  https://<your-username>.github.io
+  (Or enable Pages under Settings → Pages for any repo.)
+
+  BEFORE YOU PUBLISH — edit the two spots marked  EDIT ME:
+    • Your GitHub URL   (search: EDIT ME github)
+    • Your résumé link  (search: EDIT ME resume) — or delete that button
+  ─────────────────────────────────────────────────────────────
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Koundinya NVSS — The Question Man</title>
+<meta name="description" content="Koundinya N. V. S. S. — AI Architect, a.k.a. the Question Man. Multi-agent systems, voice AI, and the annoying questions that make them work." />
+<meta property="og:title" content="Koundinya NVSS — The Question Man" />
+<meta property="og:description" content="AI Architect who starts with questions, not answers. Multi-agent systems · voice AI · guardrails." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%3F</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --paper:#F1EEFF;
+    --ink:#181528;
+    --grape:#6C4CE0;
+    --punch:#FF5C8A;
+    --sun:#FFC93C;
+    --mint:#12C7AE;
+    --card:#FFFFFF;
+    --shadow:6px 6px 0 var(--ink);
+    --shadow-grape:6px 6px 0 var(--grape);
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Space Grotesk",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--sun);color:var(--ink);}
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:22px 0 8px;font-family:var(--mono);font-size:13px;}
+  .brand{font-weight:700;letter-spacing:.02em;}
+  .brand span{color:var(--grape);}
+  .status{display:inline-flex;align-items:center;gap:7px;color:var(--ink);opacity:.75;}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(18,199,174,.25);}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:34px 0 20px;}
+  .qmark{
+    position:absolute;right:-30px;top:16px;z-index:0;
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(240px,42vw,440px);line-height:.8;
+    color:var(--sun);cursor:pointer;user-select:none;
+    -webkit-text-stroke:4px var(--ink);
+    filter:drop-shadow(6px 8px 0 rgba(24,21,40,.12));
+    transition:transform .18s ease;
+  }
+  .qmark:hover{transform:rotate(-6deg) scale(1.03);}
+  .qmark:active{transform:rotate(3deg) scale(.97);}
+  .hero-inner{position:relative;z-index:1;}
+  .eyebrow{font-family:var(--mono);font-size:13px;color:var(--grape);font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin:0 0 14px;}
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(44px,9vw,84px);line-height:.98;
+    margin:0 0 6px;letter-spacing:-.02em;
+  }
+  .role{font-family:var(--display);font-weight:600;font-size:clamp(18px,3.4vw,24px);margin:0 0 26px;}
+  .role .aka{background:var(--ink);color:var(--paper);padding:2px 10px;border-radius:8px;display:inline-block;transform:rotate(-1.5deg);}
+
+  .bubble{
+    position:relative;background:var(--card);border:3px solid var(--ink);border-radius:16px;
+    box-shadow:var(--shadow-grape);padding:16px 18px;max-width:520px;
+    font-family:var(--mono);font-size:clamp(15px,2.6vw,18px);
+  }
+  .bubble::after{content:"";position:absolute;left:34px;bottom:-16px;width:22px;height:22px;background:var(--card);border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(45deg);}
+  .bubble .cursor{display:inline-block;width:.6ch;background:var(--grape);color:transparent;animation:blink 1s steps(1) infinite;margin-left:1px;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){.bubble .cursor{animation:none;}}
+
+  .scrollcue{margin:38px 0 8px;font-family:var(--mono);font-size:13px;opacity:.6;display:inline-flex;gap:8px;align-items:center;}
+  .scrollcue .arr{animation:bob 1.4s ease-in-out infinite;}
+  @keyframes bob{50%{transform:translateY(5px);}}
+  @media (prefers-reduced-motion: reduce){.scrollcue .arr{animation:none;}}
+
+  /* ---------- Q&A cards ---------- */
+  .qa{padding:14px 0;}
+  .card{
+    position:relative;background:var(--card);border:3px solid var(--ink);border-radius:20px;
+    box-shadow:var(--shadow);padding:26px 26px 28px;margin:26px 0;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .card:nth-child(even){transform:rotate(.5deg);}
+  .card:hover{transform:translate(-2px,-2px) rotate(0);box-shadow:9px 9px 0 var(--ink);}
+  .qtag{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--grape);letter-spacing:.06em;margin-bottom:8px;display:inline-block;}
+  .q{font-family:var(--display);font-weight:800;font-size:clamp(22px,4.6vw,32px);line-height:1.08;margin:0 0 12px;letter-spacing:-.01em;}
+  .a{font-size:16.5px;}
+  .a p{margin:0 0 12px;}
+  .a p:last-child{margin-bottom:0;}
+  .a strong{background:linear-gradient(transparent 62%, var(--sun) 62%);padding:0 2px;font-weight:700;}
+  .a .aside{font-family:var(--mono);font-size:14px;color:var(--grape);}
+  .a .orcidlink{display:inline-block;margin-top:2px;font-family:var(--mono);font-size:14px;font-weight:700;color:var(--grape);text-decoration:none;border-bottom:3px solid var(--punch);}
+  .a .orcidlink:hover{color:var(--punch);}
+
+  /* project grid */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
+  @media (max-width:560px){.projects{grid-template-columns:1fr;}}
+  .proj{border:2.5px solid var(--ink);border-radius:14px;padding:14px 15px;background:var(--paper);transition:transform .14s ease;}
+  .proj:hover{transform:translateY(-3px);}
+  .proj h4{font-family:var(--display);font-weight:800;font-size:16px;margin:0 0 5px;line-height:1.15;}
+  .proj p{margin:0;font-size:14px;line-height:1.4;opacity:.85;}
+  .proj .metric{font-family:var(--mono);color:var(--punch);font-weight:700;}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .chip{font-family:var(--mono);font-size:13px;border:2px solid var(--ink);border-radius:999px;padding:5px 11px;background:var(--card);}
+  .chip:nth-child(3n){background:var(--sun);}
+  .chip:nth-child(4n){background:var(--mint);color:var(--ink);}
+
+  /* rapid fire */
+  .rapid{list-style:none;margin:6px 0 0;padding:0;}
+  .rapid li{position:relative;padding:7px 0 7px 30px;border-bottom:2px dotted rgba(24,21,40,.18);font-size:16px;}
+  .rapid li:last-child{border-bottom:0;}
+  .rapid li::before{content:"?";position:absolute;left:0;top:6px;font-family:var(--display);font-weight:800;color:var(--grape);}
+
+  /* ---------- ask box ---------- */
+  .ask{background:var(--ink);color:var(--paper);border-radius:22px;padding:28px 26px;margin:34px 0;text-align:center;box-shadow:var(--shadow-grape);}
+  .ask h3{font-family:var(--display);font-weight:800;font-size:clamp(20px,4vw,28px);margin:0 0 6px;}
+  .ask p{margin:0 0 16px;opacity:.8;font-size:15px;}
+  .askrow{display:flex;gap:10px;max-width:480px;margin:0 auto;}
+  .askrow input{
+    flex:1;font-family:var(--mono);font-size:15px;padding:13px 15px;border-radius:12px;border:3px solid var(--paper);
+    background:transparent;color:var(--paper);min-width:0;
+  }
+  .askrow input::placeholder{color:rgba(241,238,255,.5);}
+  .askrow input:focus{outline:3px solid var(--sun);outline-offset:1px;border-color:var(--sun);}
+  .askrow button{font-family:var(--mono);font-weight:700;font-size:15px;padding:13px 18px;border-radius:12px;border:3px solid var(--paper);background:var(--sun);color:var(--ink);cursor:pointer;transition:transform .12s ease;}
+  .askrow button:hover{transform:translateY(-2px);}
+  .answerline{margin-top:16px;min-height:24px;font-family:var(--mono);font-size:15px;color:var(--sun);}
+
+  /* ---------- link in bio ---------- */
+  .flip{text-align:center;margin:46px 0 10px;}
+  .flip .qtag{color:var(--punch);}
+  .flip h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,6.5vw,52px);line-height:1;margin:6px 0 10px;letter-spacing:-.02em;}
+  .flip p{margin:0 auto 26px;max-width:440px;opacity:.85;}
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto;}
+  @media (max-width:520px){.links{grid-template-columns:1fr;}}
+  .link{
+    display:flex;align-items:center;gap:12px;text-decoration:none;
+    background:var(--card);border:3px solid var(--ink);border-radius:16px;
+    padding:15px 18px;box-shadow:var(--shadow);font-weight:700;font-size:16px;
+    transition:transform .14s ease, box-shadow .14s ease;
+  }
+  .link:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--grape);}
+  .link .ic{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--mono);font-weight:700;font-size:15px;}
+  .link small{display:block;font-family:var(--mono);font-weight:400;font-size:12px;opacity:.6;}
+
+  footer{text-align:center;font-family:var(--mono);font-size:12.5px;opacity:.6;padding:40px 0 34px;}
+  footer .q{color:var(--grape);font-family:var(--mono);font-size:12.5px;font-weight:400;}
+
+  /* reveal */
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">?<span>_</span> question&nbsp;man</div>
+    <div class="status"><span class="dot"></span> open to good problems</div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="qmark" id="bigq" title="go on, click me" aria-hidden="true">?</div>
+    <div class="hero-inner">
+      <p class="eyebrow">FAQ // but make it a whole person</p>
+      <h1>Koundinya<br>N.&nbsp;V.&nbsp;S.&nbsp;S.</h1>
+      <p class="role">AI Architect &nbsp;·&nbsp; a.k.a. <span class="aka">The Question Man</span></p>
+      <div class="bubble"><span id="typed"></span><span class="cursor">.</span></div>
+      <div class="scrollcue"><span class="arr">↓</span> start the interview</div>
+    </div>
+  </header>
+
+  <!-- Q&A -->
+  <main class="qa">
+
+    <article class="card reveal">
+      <span class="qtag">Q.01</span>
+      <h2 class="q">Okay — who is this?</h2>
+      <div class="a">
+        <p>Koundinya. An <strong>AI Architect</strong> with 7+ years turning fuzzy, real-world problems into production AI — across healthcare, travel tech, public sector, and insurance.</p>
+        <p>I did a dual degree at <strong>BITS Pilani</strong> in Mechanical Engineering <em>and</em> Mathematics. Yes, both. No, I don't build engines anymore.</p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.02</span>
+      <h2 class="q">So why "The Question Man"?</h2>
+      <div class="a">
+        <p>Because I don't start with answers. I start with questions: <em>What actually breaks at scale? What happens when the model is confidently wrong? Who's on the hook when it fails?</em></p>
+        <p>Ask enough of the right ones and the architecture more or less designs itself. <span class="aside">// fair warning: I will ask "but why?" at least four times per meeting.</span></p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.03</span>
+      <h2 class="q">What do you actually build?</h2>
+      <div class="a">
+        <p><strong>Multi-agent systems</strong>, RAG pipelines, and <strong>voice-first assistants</strong> — including ones that speak Telugu, Kannada, Tamil, Malayalam and Hindi.</p>
+        <p>I'm loud about two things: <strong>AI safety</strong> (guardrails deserve to be their own service) and <strong>grounding</strong> (feed an LLM the right knowledge source so it stops making things up).</p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.04</span>
+      <h2 class="q">Show me the cool stuff.</h2>
+      <div class="a">
+        <div class="projects">
+          <div class="proj"><h4>Voice-first Health Assistant</h4><p><span class="metric">sub-2s</span> · 7 medical specialties · multi-agent with auto EHR generation.</p></div>
+          <div class="proj"><h4>Indic Voice Pipeline</h4><p><span class="metric">5 languages</span> · production STT → LLM → TTS, tuned for Indian speech.</p></div>
+          <div class="proj"><h4>Clinical Decision Support</h4><p><span class="metric">82% / 87%</span> accuracy · a SNOMED CT knowledge graph keeps the LLM honest.</p></div>
+          <div class="proj"><h4>Multi-agent Travel Assistant</h4><p><span class="metric">5 agents</span> · 50+ tools across 14 service domains.</p></div>
+          <div class="proj"><h4>Guardrails Microservice</h4><p>PII / jailbreak / hallucination screening — <span class="metric">SDK-agnostic</span>.</p></div>
+          <div class="proj"><h4>RAG-Fusion Assistant</h4><p><span class="metric">15%</span> better than baseline RAG, with live confidence scoring.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.05</span>
+      <h2 class="q">Where have you done all this?</h2>
+      <div class="a">
+        <p><strong>Genpact</strong> (intern → manager, ~5 years of data science), then <strong>AI Solutions Architect at DigiQuanta</strong>, then <strong>AI Architect at Mondee</strong>.</p>
+        <p>Right now: between adventures, and hunting for the next genuinely hard problem. <span class="aside">// hint below.</span></p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.06</span>
+      <h2 class="q">What's in the toolbox?</h2>
+      <div class="a">
+        <div class="chips">
+          <span class="chip">LangGraph</span><span class="chip">Google ADK</span><span class="chip">LiveKit</span>
+          <span class="chip">FastMCP</span><span class="chip">RAG</span><span class="chip">Qdrant</span>
+          <span class="chip">Memgraph</span><span class="chip">SNOMED CT</span><span class="chip">Python</span>
+          <span class="chip">FastAPI</span><span class="chip">Langfuse</span><span class="chip">Arize Phoenix</span>
+          <span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">GCP</span>
+          <span class="chip">OCI</span><span class="chip">Kubernetes</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.07</span>
+      <h2 class="q">Wait, you write papers too?</h2>
+      <div class="a">
+        <p><strong>16 peer-reviewed papers</strong> and <strong>1 patent</strong>. Things I keep poking at: RAG paradigms, prompt-injection defense, multimodal AI, and time-series forecasting.</p>
+        <p><span class="aside">// the patent's about dimension estimation across multi-view, multi-scale systems. Say that five times fast.</span></p>
+        <p><a class="orcidlink" href="https://orcid.org/0000-0003-1663-3112" target="_blank" rel="noopener">// don't just take my word for it — the full list lives on ORCID ↗</a></p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.08</span>
+      <h2 class="q">Anything besides shipping code?</h2>
+      <div class="a">
+        <p>I'm on the AI/ML core team at <strong>Swecha</strong>, an open-source community. Organized <strong>AI Days 2025</strong>, ran the Spark Camp, and teach workshops on agentic frameworks.</p>
+        <p>Also once did a parliamentary fellowship researching gender inequality — and got a recommendation letter I'm still a little too proud of.</p>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <span class="qtag">Q.09</span>
+      <h2 class="q">Rapid fire. Go.</h2>
+      <div class="a">
+        <ul class="rapid">
+          <li>Mechanical engineer who fell for maths, then fell harder for machine learning.</li>
+          <li>INSPIRE scholar; once placed 3rd in a state Maths Olympiad.</li>
+          <li>Firmly believes a good question beats a clever answer.</li>
+          <li>Will happily whiteboard your architecture at 11pm.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- ASK BOX -->
+    <section class="ask reveal">
+      <h3>Ask the Question Man</h3>
+      <p>Type anything. He answers in the only way he knows how.</p>
+      <div class="askrow">
+        <input id="askInput" type="text" placeholder="e.g. can you fix my RAG?" aria-label="Ask a question" />
+        <button id="askBtn" type="button">Ask</button>
+      </div>
+      <div class="answerline" id="answerLine" aria-live="polite"></div>
+    </section>
+
+  </main>
+
+  <!-- FLIP THE TABLES / LINK IN BIO -->
+  <section class="flip reveal">
+    <span class="qtag">Q.10 — his turn</span>
+    <h2>Now… what are<br>YOU building?</h2>
+    <p>That's the only question that matters. Tell me — I'm genuinely curious, and probably free.</p>
+    <div class="links">
+      <a class="link" href="mailto:koundinya.nvss@gmail.com">
+        <span class="ic">@</span><span>Email me<small>koundinya.nvss@gmail.com</small></span>
+      </a>
+      <a class="link" href="https://www.linkedin.com/in/koundinya-nvss" target="_blank" rel="noopener">
+        <span class="ic">in</span><span>LinkedIn<small>/in/koundinya-nvss</small></span>
+      </a>
+      <!-- EDIT ME github: replace with your real GitHub URL -->
+      <a class="link" href="https://github.com/koundinya-nvss" target="_blank" rel="noopener">
+        <span class="ic">{ }</span><span>GitHub<small>the code lives here</small></span>
+      </a>
+      <!-- résumé: drop a file named resume.pdf into the same repo and this button just works -->
+      <a class="link" href="resume.pdf" target="_blank" rel="noopener">
+        <span class="ic">CV</span><span>Résumé<small>the formal version</small></span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="q">// asked and answered.</span><br>
+    Built with too many questions · © <span id="yr"></span> Koundinya NVSS
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* typed cycling questions in the hero bubble */
+  var lines = [
+    "So… who are you, really?",
+    "What does an 'AI Architect' even do?",
+    "Why do they call you the Question Man?",
+    "Can we build something together?"
+  ];
+  var typed = document.getElementById('typed');
+  if(reduce){
+    typed.textContent = lines[0];
+  } else {
+    var li=0, ci=0, deleting=false;
+    (function tick(){
+      var cur = lines[li];
+      typed.textContent = deleting ? cur.slice(0,ci--) : cur.slice(0,ci++);
+      var delay = deleting ? 34 : 62;
+      if(!deleting && ci > cur.length){ deleting=false; delay=1500; ci=cur.length; setTimeout(function(){deleting=true;tick();},delay); return; }
+      if(deleting && ci < 0){ deleting=false; ci=0; li=(li+1)%lines.length; delay=280; }
+      setTimeout(tick, delay);
+    })();
+  }
+
+  /* clickable big "?" fires back cheeky questions */
+  var comebacks = [
+    "But what problem are we actually solving?",
+    "Have you considered: what breaks at 10x scale?",
+    "Sure — but who owns it when the model's wrong?",
+    "Great. Now, why?",
+    "And how would we measure that?",
+    "What's the boring version that ships this week?"
+  ];
+  var bigq = document.getElementById('bigq'), n=0;
+  bigq.addEventListener('click', function(){
+    n++;
+    typed.textContent = comebacks[Math.floor(Math.random()*comebacks.length)];
+    bigq.setAttribute('title', n+' question'+(n===1?'':'s')+' and counting…');
+  });
+
+  /* ask box */
+  var input=document.getElementById('askInput'), btn=document.getElementById('askBtn'), out=document.getElementById('answerLine');
+  var replies = [
+    "Excellent question. My answer is another question →",
+    "Depends. What are you optimizing for?",
+    "Yes — but let's start with 'why', not 'how'.",
+    "Love it. Email me and let's whiteboard it.",
+    "The Question Man never answers. He clarifies. →",
+    "Bold. Have you tried grounding it in a knowledge graph?"
+  ];
+  function answer(){
+    var q=(input.value||'').trim();
+    out.textContent = q ? replies[Math.floor(Math.random()*replies.length)] : "…you have to actually ask something first.";
+  }
+  btn.addEventListener('click', answer);
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter') answer(); });
+
+  /* scroll reveal */
+  var items = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    }, {threshold:0.12});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
